@@ -51,6 +51,9 @@ export default function MateriasSelector({ materiasPorNivel, estados, estadosEle
                         <div style={{ flex: 1, minWidth: 0, marginBottom: '8px' }}>
                           <span className="fw-bold" style={{ fontSize: '1.1em' }}>{m.nombre}</span>
                           <span className="ms-2 text-muted" style={{ fontSize: '1em' }}>{m.codigo}</span>
+                          {m.modalidad && (
+                            <span className="badge bg-info ms-2" style={{ fontSize: '0.9em', verticalAlign: 'middle' }}>{m.modalidad}</span>
+                          )}
                         </div>
                         {estados[m.id] === "bloqueada" ? (
                           <span className="badge bg-secondary" style={{ minWidth: "130px", marginLeft: "8px", fontSize: '1.1em', padding: '10px' }}>

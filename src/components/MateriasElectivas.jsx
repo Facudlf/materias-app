@@ -68,6 +68,9 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
                         <div style={{ flex: 1, minWidth: 0, marginBottom: '8px' }}>
                           <span className="fw-bold" style={{ fontSize: '1.1em' }}>{e.nombre}</span>
                           <span className="ms-2 text-muted" style={{ fontSize: '1em' }}>Créditos: {e.creditos}</span>
+                          {e.modalidad && (
+                            <span className="badge bg-info ms-2" style={{ fontSize: '0.9em', verticalAlign: 'middle' }}>{e.modalidad}</span>
+                          )}
                         </div>
                         {estados[e.id] === "bloqueada" ? (
                           <span className="badge bg-secondary" style={{ minWidth: "130px", marginLeft: "8px", fontSize: '1.1em', padding: '10px' }}>
