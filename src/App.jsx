@@ -39,20 +39,24 @@ export default function App() {
   const [estados, setEstados] = useState({});
   const [estadosElectivas, setEstadosElectivas] = useState({});
 
-  // Limpia estados inválidos cuando correlativas cambian (materias regulares)
+  // Actualiza estados automáticamente según correlatividades (materias regulares)
   useEffect(() => {
     setEstados(prev => {
       const nuevosEstados = { ...prev };
       let cambios = false;
       materiasIniciales.forEach(m => {
-        // Solo puede estar en regular/aprobada si está habilitada
         const habilitado = puedeCursar(m, prev, estadosElectivas);
-        if (
-          !habilitado &&
-          (prev[m.id] === "regular" || prev[m.id] === "aprobada")
-        ) {
-          nuevosEstados[m.id] = "no";
+        const tieneCorrelativas = (m.requisitosRegular && m.requisitosRegular.length > 0) || (m.requisitosAprobada && m.requisitosAprobada.length > 0);
+        // Si no puede cursar y tiene correlativas, SIEMPRE bloquear
+        if (!habilitado && tieneCorrelativas) {
+          nuevosEstados[m.id] = "bloqueada";
           cambios = true;
+        } else {
+          // Si está bloqueada y ahora puede cursar, lo pasa a 'no'
+          if (prev[m.id] === "bloqueada") {
+            nuevosEstados[m.id] = "no";
+            cambios = true;
+          }
         }
       });
       return cambios ? nuevosEstados : prev;
@@ -60,22 +64,26 @@ export default function App() {
     // eslint-disable-next-line
   }, [materiasIniciales, estados, estadosElectivas]);
 
-  // Limpia estados inválidos de electivas cuando correlativas cambian
+  // Actualiza estados automáticamente según correlatividades (electivas)
   useEffect(() => {
     setEstadosElectivas(prev => {
       const nuevosEstados = { ...prev };
       let cambios = false;
       materiasElectivas.forEach(e => {
-        // Solo puede estar en regular/aprobada si está habilitada
         const regulares = e.requisitosRegular.every(id => estados[id] === "regular" || estados[id] === "aprobada");
         const aprobadas = e.requisitosAprobada.every(id => estados[id] === "aprobada");
         const habilitado = regulares && aprobadas;
-        if (
-          !habilitado &&
-          (prev[e.id] === "regular" || prev[e.id] === "aprobada")
-        ) {
-          nuevosEstados[e.id] = "no";
+        const tieneCorrelativas = (e.requisitosRegular && e.requisitosRegular.length > 0) || (e.requisitosAprobada && e.requisitosAprobada.length > 0);
+        // Si no puede cursar y tiene correlativas, SIEMPRE bloquear
+        if (!habilitado && tieneCorrelativas) {
+          nuevosEstados[e.id] = "bloqueada";
           cambios = true;
+        } else {
+          // Si está bloqueada y ahora puede cursar, lo pasa a 'no'
+          if (prev[e.id] === "bloqueada") {
+            nuevosEstados[e.id] = "no";
+            cambios = true;
+          }
         }
       });
       return cambios ? nuevosEstados : prev;

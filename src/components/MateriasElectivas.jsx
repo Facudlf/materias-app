@@ -14,11 +14,17 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
     .filter(e => estados[e.id] === "aprobada")
     .reduce((sum, e) => sum + (e.creditos || 0), 0);
 
-  // Función para cambiar el estado de todas las electivas de un nivel
+  // Función para cambiar el estado de todas las electivas de un nivel, solo si pueden estar en ese estado
   const cambiarEstadoNivel = (nivel, nuevoEstado) => {
-    (electivasPorNivel[nivel] || []).forEach(e =>
-      onChange(e.id, nuevoEstado)
-    );
+    (electivasPorNivel[nivel] || []).forEach(e => {
+      if (
+        nuevoEstado === "no" ||
+        (nuevoEstado === "regular" && puedeCursarElectiva(e)) ||
+        (nuevoEstado === "aprobada" && puedeCursarElectiva(e))
+      ) {
+        onChange(e.id, nuevoEstado);
+      }
+    });
   };
 
   // Determina si la electiva está habilitada para cursar (usa la misma lógica que las materias regulares)
@@ -35,7 +41,7 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
 
   return (
     <Container className="mb-4">
-      <h3 className="mb-3">Materias Electivas <Badge bg="info">Créditos aprobados: {creditosAprobados}</Badge></h3>
+      <h3 className="mb-3"><Badge bg="info">Créditos obtenidos: {creditosAprobados}</Badge></h3>
       <Row>
         {niveles.map((nivel, idx) => (
           <Col key={nivel} md={4} className="mb-3">
@@ -48,20 +54,18 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
                   <Button variant="outline-success" size="sm" onClick={() => cambiarEstadoNivel(nivel, "aprobada")}>Aprobar todas</Button>
                 </div>
                 {(electivasPorNivel[nivel] || []).map(e => {
-                  let color = "";
-                  if (estados[e.id] === "aprobada") color = "bg-success text-white";
-                  else if (puedeCursarElectiva(e) && estados[e.id] !== "regular" && estados[e.id] !== "aprobada") color = "bg-warning";
+                  // El color y el selector dependen solo del estado actual
+                  let color;
+                  if (estados[e.id] === "bloqueada") color = "bg-secondary text-white";
+                  else if (estados[e.id] === "aprobada") color = "bg-success text-white";
                   else if (estados[e.id] === "regular") color = "bg-info";
-
-                  const habilitado =
-                    puedeCursarElectiva(e) ||
-                    estados[e.id] === "regular" ||
-                    estados[e.id] === "aprobada";
+                  else if (puedeCursarElectiva(e)) color = "bg-warning";
+                  else color = "bg-light text-muted";
 
                   return (
-                    <Card className={`mb-2 ${color}`} key={e.id}>
-                      <Card.Body className="d-flex align-items-center justify-content-between p-2">
-                        <div>
+                    <Card className={`mb-2 ${color}`} key={e.id} style={{ minWidth: "270px", maxWidth: "100%" }}>
+                      <Card.Body className="d-flex align-items-center justify-content-between p-2" style={{ minHeight: "48px" }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
                           <span className="fw-bold">{e.nombre}</span>
                           <span className="ms-2 text-muted">Créditos: {e.creditos}</span>
                         </div>
@@ -69,12 +73,13 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
                           size="sm"
                           value={estados[e.id] || "no"}
                           onChange={ev => onChange(e.id, ev.target.value)}
-                          disabled={!habilitado}
-                          style={{ width: "130px" }}
+                          disabled={estados[e.id] === "bloqueada"}
+                          style={{ width: "140px", marginLeft: "8px" }}
                         >
                           <option value="no">No cursada</option>
                           <option value="regular">Regular</option>
                           <option value="aprobada">Aprobada</option>
+                          <option value="bloqueada">Bloqueada</option>
                         </Form.Select>
                       </Card.Body>
                     </Card>
