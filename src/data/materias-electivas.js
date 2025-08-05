@@ -15,7 +15,7 @@ export const materiasElectivas = [
   { id: 114, nivel: "5", nombre: "Emprendimientos Tecnológicos", modalidad: "Cuatrimestral", requisitosRegular: [30], requisitosAprobada: [16, 19], creditos: 3 },
   { id: 115, nivel: "5", nombre: "Decisiones en Escenarios Complejos", modalidad: "Cuatrimestral", requisitosRegular: [27], requisitosAprobada: [19], creditos: 3 },
   { id: 116, nivel: "5", nombre: "Testing de Software", modalidad: "Cuatrimestral", requisitosRegular: [25], requisitosAprobada: [19, 20], creditos: 3 },
-  { id: 117, nivel: "5", nombre: "Seguridad en el Desarrollo de Software", modalidad: "Cuatrimestral", requisitosRegular: [26, 19], requisitosAprobada: [20, 8], creditos: 3 },
+  { id: 117, nivel: "5", nombre: "Seguridad en el Desarrollo de Software", modalidad: "Cuatrimestral", requisitosRegular: [19, 101], requisitosAprobada: [20, 8], creditos: 3 },
   { id: 118, nivel: "5", nombre: "Integración de Aplicaciones en Entorno Web", modalidad: "Cuatrimestral", requisitosRegular: [26, 19], requisitosAprobada: [19, 20], creditos: 3 },
   { id: 119, nivel: "5", nombre: "Ingeniería de Software de Fuentes Abiertas/Libres", modalidad: "Cuatrimestral", requisitosRegular: [19, 20, 26], requisitosAprobada: [13, 14], creditos: 3 }
 ];
