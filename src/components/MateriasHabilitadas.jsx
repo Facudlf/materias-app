@@ -51,12 +51,12 @@ export default function MateriasHabilitadas({ materias }) {
                           <Badge
                             bg="primary"
                             key={m.id}
-                            className="w-100 d-flex align-items-center justify-content-center"
-                            style={{ fontSize: '1em', padding: '8px', whiteSpace: 'normal', wordBreak: 'break-word', textAlign: 'center', gap: '8px' }}
+                            className="w-100 d-flex flex-column align-items-center justify-content-center"
+                            style={{ fontSize: '1em', padding: '8px', whiteSpace: 'normal', wordBreak: 'break-word', textAlign: 'center', gap: '2px' }}
                           >
                             <span>{m.nombre}</span>
                             {m.modalidad && (
-                              <span className="badge bg-info ms-2" style={{ fontSize: '0.9em', verticalAlign: 'middle' }}>{m.modalidad}</span>
+                              <span className="badge bg-info mt-1" style={{ fontSize: '0.9em' }}>{m.modalidad}</span>
                             )}
                           </Badge>
                         ))}
