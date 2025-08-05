@@ -27,7 +27,7 @@ export default function MateriasSelector({ materiasPorNivel, estados, estadosEle
 
       <Row>
         {niveles.map((nivel, idx) => (
-          <Col key={nivel} md={4} className="mb-3">
+          <Col key={nivel} xs={12} sm={6} md={4} className="mb-3">
             <Card>
               <Card.Header className="text-center">Nivel {nivel}</Card.Header>
               <Card.Body>
@@ -46,24 +46,30 @@ export default function MateriasSelector({ materiasPorNivel, estados, estadosEle
                   else color = "bg-light text-muted";
 
                   return (
-                    <Card className={`mb-2 ${color}`} key={m.id} style={{ minWidth: "270px", maxWidth: "100%" }}>
-                      <Card.Body className="d-flex align-items-center justify-content-between p-2" style={{ minHeight: "48px" }}>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <span className="fw-bold">{m.nombre}</span>
-                          <span className="ms-2 text-muted">{m.codigo}</span>
+                    <Card className={`mb-2 ${color}`} key={m.id} style={{ minWidth: "180px", maxWidth: "100%" }}>
+                      <Card.Body className="d-flex align-items-center justify-content-between p-2 flex-wrap" style={{ minHeight: "48px" }}>
+                        <div style={{ flex: 1, minWidth: 0, marginBottom: '8px' }}>
+                          <span className="fw-bold" style={{ fontSize: '1.1em' }}>{m.nombre}</span>
+                          <span className="ms-2 text-muted" style={{ fontSize: '1em' }}>{m.codigo}</span>
                         </div>
-                        <Form.Select
-                          size="sm"
-                          value={estados[m.id] || "no"}
-                          onChange={e => onChange(m.id, e.target.value)}
-                          disabled={estados[m.id] === "bloqueada"}
-                          style={{ width: "140px", marginLeft: "8px" }}
-                        >
-                          <option value="no">No cursada</option>
-                          <option value="regular">Regular</option>
-                          <option value="aprobada">Aprobada</option>
-                          <option value="bloqueada">Bloqueada</option>
-                        </Form.Select>
+                        {estados[m.id] === "bloqueada" ? (
+                          <span className="badge bg-secondary" style={{ minWidth: "130px", marginLeft: "8px", fontSize: '1.1em', padding: '10px' }}>
+                            Bloqueada
+                          </span>
+                        ) : (
+                          <Form.Select
+                            size="sm"
+                            value={estados[m.id] || "no"}
+                            onChange={e => onChange(m.id, e.target.value)}
+                            aria-label={`Estado de ${m.nombre}`}
+                            style={{ minWidth: "130px", maxWidth: "100%", marginLeft: "8px", padding: '10px', fontSize: '1.1em' }}
+                            title="Selecciona el estado"
+                          >
+                            <option value="no">No cursada</option>
+                            <option value="regular">Regular</option>
+                            <option value="aprobada">Aprobada</option>
+                          </Form.Select>
+                        )}
                       </Card.Body>
                     </Card>
                   );

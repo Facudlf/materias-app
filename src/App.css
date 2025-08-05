@@ -1,3 +1,12 @@
+.modo-oscuro, .modo-oscuro * {
+  background-color: #181818 !important;
+  color: #f1f1f1 !important;
+}
+body.modo-oscuro, .modo-oscuro#root {
+  background-color: #181818 !important;
+  color: #f1f1f1 !important;
+}
+/* Modo oscuro para la app */
 #root {
   max-width: 1280px;
   margin: 0 auto;

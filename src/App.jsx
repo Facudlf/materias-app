@@ -36,8 +36,30 @@ function agruparPorNivel(materias) {
 }
 
 export default function App() {
-  const [estados, setEstados] = useState({});
-  const [estadosElectivas, setEstadosElectivas] = useState({});
+  // Persistencia en localStorage
+  const [estados, setEstados] = useState(() => {
+    try {
+      const saved = localStorage.getItem('materias-estados');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+  const [estadosElectivas, setEstadosElectivas] = useState(() => {
+    try {
+      const saved = localStorage.getItem('materias-electivas-estados');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+  // Guardar estados en localStorage cuando cambian
+  React.useEffect(() => {
+    localStorage.setItem('materias-estados', JSON.stringify(estados));
+  }, [estados]);
+  React.useEffect(() => {
+    localStorage.setItem('materias-electivas-estados', JSON.stringify(estadosElectivas));
+  }, [estadosElectivas]);
 
   // Actualiza estados automáticamente según correlatividades (materias regulares)
   useEffect(() => {
