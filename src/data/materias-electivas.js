@@ -1,0 +1,21 @@
+export const materiasElectivas = [
+  { id: 101, nivel: "3", nombre: "Backend de Aplicaciones", modalidad: "Cuatrimestral", requisitosRegular: [14, 13], requisitosAprobada: [6], creditos: 4 },
+  { id: 102, nivel: "4", nombre: "Green Software", modalidad: "Cuatrimestral", requisitosRegular: [20, 19], requisitosAprobada: [14, 13], creditos: 3 },
+  { id: 103, nivel: "4", nombre: "Gestión Industrial de la Producción", modalidad: "Cuatrimestral", requisitosRegular: [19], requisitosAprobada: [8, 16], creditos: 3 },
+  { id: 104, nivel: "4", nombre: "Gestión de la Mejora de los Procesos", modalidad: "Cuatrimestral", requisitosRegular: [19], requisitosAprobada: [8, 16], creditos: 3 },
+  { id: 105, nivel: "4", nombre: "Desarrollo y Operaciones devOPS", modalidad: "Cuatrimestral", requisitosRegular: [19, 20], requisitosAprobada: [14, 13], creditos: 3 },
+  { id: 106, nivel: "4", nombre: "Desarrollo de Aplicaciones Con Objetos", modalidad: "Cuatrimestral", requisitosRegular: [13], requisitosAprobada: [6], creditos: 3 },
+  { id: 107, nivel: "4", nombre: "Comunicación Multimedial en el Desarrollo de Sistemas de Información", modalidad: "Cuatrimestral", requisitosRegular: [19], requisitosAprobada: [8, 16], creditos: 3 },
+  { id: 108, nivel: "4", nombre: "Arquitectura de Software", modalidad: "Cuatrimestral", requisitosRegular: [19, 20], requisitosAprobada: [14, 13], creditos: 3 },
+  { id: 109, nivel: "5", nombre: "Desarrollo de Tecnología Blockchain", modalidad: "Cuatrimestral", requisitosRegular: [26, 19], requisitosAprobada: [14, 20], creditos: 3 },
+  { id: 110, nivel: "5", nombre: "Creatividad e Innovación en Ingeniería", modalidad: "Cuatrimestral", requisitosRegular: [30], requisitosAprobada: [20], creditos: 3 },
+  { id: 111, nivel: "5", nombre: "Auditorías de Si/Ti", modalidad: "Cuatrimestral", requisitosRegular: [30], requisitosAprobada: [20], creditos: 3 },
+  { id: 112, nivel: "5", nombre: "Gerenciamiento Estratégico", modalidad: "Cuatrimestral", requisitosRegular: [30], requisitosAprobada: [20], creditos: 3 },
+  { id: 113, nivel: "5", nombre: "Consultoría en Negocios Digitales", modalidad: "Cuatrimestral", requisitosRegular: [30], requisitosAprobada: [20], creditos: 3 },
+  { id: 114, nivel: "5", nombre: "Emprendimientos Tecnológicos", modalidad: "Cuatrimestral", requisitosRegular: [30], requisitosAprobada: [16, 19], creditos: 3 },
+  { id: 115, nivel: "5", nombre: "Decisiones en Escenarios Complejos", modalidad: "Cuatrimestral", requisitosRegular: [27], requisitosAprobada: [19], creditos: 3 },
+  { id: 116, nivel: "5", nombre: "Testing de Software", modalidad: "Cuatrimestral", requisitosRegular: [25], requisitosAprobada: [19, 20], creditos: 3 },
+  { id: 117, nivel: "5", nombre: "Seguridad en el Desarrollo de Software", modalidad: "Cuatrimestral", requisitosRegular: [26, 19], requisitosAprobada: [20, 8], creditos: 3 },
+  { id: 118, nivel: "5", nombre: "Integración de Aplicaciones en Entorno Web", modalidad: "Cuatrimestral", requisitosRegular: [26, 19], requisitosAprobada: [19, 20], creditos: 3 },
+  { id: 119, nivel: "5", nombre: "Ingeniería de Software de Fuentes Abiertas/Libres", modalidad: "Cuatrimestral", requisitosRegular: [19, 20, 26], requisitosAprobada: [13, 14], creditos: 3 }
+];
