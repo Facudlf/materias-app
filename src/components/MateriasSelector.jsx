@@ -41,6 +41,7 @@ export default function MateriasSelector({ materiasPorNivel, estados, estadosEle
                   let color;
                   if (estados[m.id] === "bloqueada") color = "bg-secondary text-white";
                   else if (estados[m.id] === "aprobada") color = "bg-success text-white";
+                  else if (estados[m.id] === "cursando") color = "bg-primary text-white";
                   else if (estados[m.id] === "regular") color = "bg-info";
                   else if (puedeCursar(m, estados, estadosElectivas)) color = "bg-warning";
                   else color = "bg-light text-muted";
@@ -69,6 +70,7 @@ export default function MateriasSelector({ materiasPorNivel, estados, estadosEle
                             title="Selecciona el estado"
                           >
                             <option value="no">No cursada</option>
+                            <option value="cursando">Cursando</option>
                             <option value="regular">Regular</option>
                             <option value="aprobada">Aprobada</option>
                           </Form.Select>

@@ -58,6 +58,7 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
                   let color;
                   if (estados[e.id] === "bloqueada") color = "bg-secondary text-white";
                   else if (estados[e.id] === "aprobada") color = "bg-success text-white";
+                  else if (estados[e.id] === "cursando") color = "bg-primary text-white";
                   else if (estados[e.id] === "regular") color = "bg-info";
                   else if (puedeCursarElectiva(e)) color = "bg-warning";
                   else color = "bg-light text-muted";
@@ -86,6 +87,7 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
                             title="Selecciona el estado"
                           >
                             <option value="no">No cursada</option>
+                            <option value="cursando">Cursando</option>
                             <option value="regular">Regular</option>
                             <option value="aprobada">Aprobada</option>
                           </Form.Select>
