@@ -4,12 +4,13 @@ import { materiasElectivas } from "./data/materias-electivas.js";
 import MateriasSelector from "./components/MateriasSelector.jsx";
 import MateriasHabilitadas from "./components/MateriasHabilitadas.jsx";
 import MateriasElectivas from "./components/MateriasElectivas.jsx";
+import WeeklySchedule from "./components/WeeklySchedule.jsx";
 
 function puedeCursar(materia, estados, estadosElectivas) {
   // Helper para obtener el estado de cualquier materia (regular o electiva)
   const getEstado = id => {
-    if (estados.hasOwnProperty(id)) return estados[id];
-    if (estadosElectivas && estadosElectivas.hasOwnProperty(id)) return estadosElectivas[id];
+    if (Object.prototype.hasOwnProperty.call(estados, id)) return estados[id];
+    if (estadosElectivas && Object.prototype.hasOwnProperty.call(estadosElectivas, id)) return estadosElectivas[id];
     return undefined;
   };
   // Log para todas las materias
@@ -124,8 +125,8 @@ export default function App() {
   const puedeCursarElectiva = (electiva) => {
     // Las electivas pueden tener correlativas regulares o electivas
     const getEstado = id => {
-      if (estados.hasOwnProperty(id)) return estados[id];
-      if (estadosElectivas.hasOwnProperty(id)) return estadosElectivas[id];
+      if (Object.prototype.hasOwnProperty.call(estados, id)) return estados[id];
+      if (Object.prototype.hasOwnProperty.call(estadosElectivas, id)) return estadosElectivas[id];
       return undefined;
     };
     const regulares = electiva.requisitosRegular.every(id => getEstado(id) === "regular" || getEstado(id) === "aprobada");
@@ -161,6 +162,7 @@ export default function App() {
       />
       <h3>Materias que puedes cursar:</h3>
       <MateriasHabilitadas materias={materiasHabilitadas} estados={estados} />
+      <WeeklySchedule />
     </div>
   );
 }

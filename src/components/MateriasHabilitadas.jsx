@@ -14,7 +14,6 @@ export default function MateriasHabilitadas({ materias }) {
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF({ orientation: "landscape" });
     const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = pdf.internal.pageSize.getHeight();
     const imgProps = pdf.getImageProperties(imgData);
     const imgWidth = pageWidth;
     const imgHeight = (imgProps.height * imgWidth) / imgProps.width;

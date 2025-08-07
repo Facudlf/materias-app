@@ -1,0 +1,78 @@
+.weekly-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.subject-list {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.subject-btn {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  cursor: pointer;
+}
+
+.subject-btn.active {
+  background: #40e0d0;
+  color: #fff;
+}
+
+.calendar {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 60px repeat(6, 1fr);
+  position: relative;
+}
+
+.time-column .time-cell {
+  height: var(--row-height);
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+}
+
+.day-column {
+  position: relative;
+  border-left: 1px solid #eee;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent calc(var(--row-height) - 1px),
+    #eee calc(var(--row-height) - 1px),
+    #eee var(--row-height)
+  );
+}
+
+.event-block {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  background: #ffe5b4;
+  border: 2px dotted #ffa500;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.event-block.selected {
+  background: #40e0d0;
+  border: 2px solid #008b8b;
+  color: #fff;
+}
+
+.event-block.dimmed {
+  opacity: 0.3;
+}
+
+.event-block .close {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  cursor: pointer;
+}

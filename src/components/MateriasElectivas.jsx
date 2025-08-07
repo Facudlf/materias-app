@@ -31,7 +31,7 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
   function puedeCursarElectiva(electiva) {
     const getEstado = id => {
       // Si el id corresponde a una electiva, busca en estados; si no, en estadosMaterias
-      if (estados.hasOwnProperty(id)) return estados[id];
+      if (Object.prototype.hasOwnProperty.call(estados, id)) return estados[id];
       return estadosMaterias[id];
     };
     const regulares = electiva.requisitosRegular.every(id => getEstado(id) === "regular" || getEstado(id) === "aprobada");
@@ -43,7 +43,7 @@ export default function MateriasElectivas({ electivas, estados, estadosMaterias,
     <Container className="mb-4">
       <h3 className="mb-3"><Badge bg="info">Créditos obtenidos: {creditosAprobados}</Badge></h3>
       <Row>
-        {niveles.map((nivel, idx) => (
+        {niveles.map(nivel => (
           <Col key={nivel} xs={12} sm={6} md={4} className="mb-3">
             <Card>
               <Card.Header className="text-center">Nivel {nivel}</Card.Header>

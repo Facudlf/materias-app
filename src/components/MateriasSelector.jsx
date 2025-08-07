@@ -26,7 +26,7 @@ export default function MateriasSelector({ materiasPorNivel, estados, estadosEle
     <Container className="mb-4">
 
       <Row>
-        {niveles.map((nivel, idx) => (
+        {niveles.map(nivel => (
           <Col key={nivel} xs={12} sm={6} md={4} className="mb-3">
             <Card>
               <Card.Header className="text-center">Nivel {nivel}</Card.Header>
