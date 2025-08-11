@@ -142,9 +142,31 @@ export default function App() {
       .filter(e => estadosElectivas[e.id] !== "regular" && estadosElectivas[e.id] !== "aprobada")
   ];
 
+  // Botón para reestablecer estados y limpiar localStorage
+  const handleReset = () => {
+    localStorage.removeItem('materias-estados');
+    localStorage.removeItem('materias-electivas-estados');
+    setEstados({});
+    setEstadosElectivas({});
+  };
+
   return (
     <div>
       <h2>Selecciona el estado de tus materias</h2>
+      <div style={{ display: 'flex', gap: '1em', marginBottom: '1em' }}>
+        <button
+          onClick={handleReset}
+          style={{ backgroundColor: 'red', color: 'white', border: 'none', padding: '0.5em 1em', borderRadius: '4px', cursor: 'pointer' }}
+        >
+          Reestablecer todo
+        </button>
+        <a
+          href="/registro-promedio"
+          style={{ backgroundColor: '#1976d2', color: 'white', border: 'none', padding: '0.5em 1em', borderRadius: '4px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
+        >
+          Registro de promedio
+        </a>
+      </div>
       <MateriasSelector
         materiasPorNivel={materiasPorNivel}
         estados={estados}
