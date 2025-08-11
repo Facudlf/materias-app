@@ -209,7 +209,7 @@ export default function RegistroPromedio() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/inicio")}
                 style={{ fontWeight: 'bold' }}
               >
                 Volver al inicio
